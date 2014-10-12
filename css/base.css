@@ -1,6 +1,22 @@
-body{
+body, p, ul, li{
 	font-family: 宋体, "Times New Roman", Serif;
+	font-size: 12pt;
 	margin: 0;
 	padding: 0;
 	border: none;
+}
+
+h1, h2, h3, h4{
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+ul, li{
+	list-style: none;
+}
+
+a{
+	text-decoration: none;
+	color: black;
 }

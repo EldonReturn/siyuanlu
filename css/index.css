@@ -1,9 +1,73 @@
 @import url(base.css);
 
-ul{
-	position: relative;
+.news_area{
+	margin-top: 20pt;
+	margin-bottom: 20pt;
+	margin-right: 30pt;
+	margin-left: 30pt;
 }
 
-li{
+.news_block{
+	position: relative;
+	margin: 5pt;
+	height: 500pt;
+}
+
+.news_block .news_item{
 	position: absolute;
+}
+
+.news_block .news_item .news_item_container{
+	margin: 5pt;
+}
+
+.news_block .news_item .news_item_container .news_item_image{
+	width: 100%;
+	height: 60%;
+}
+
+.news_block .news_item .news_item_container .news_item_title{
+	margin-top: 2pt;
+	margin-bottom: 5pt;
+}
+
+.news_block .news_item .news_item_container .news_item_text{
+	font-size: 0.85em;
+	margin-bottom: 10pt;
+}
+
+.news_block .news_item .news_item_container .news_item_stat{
+	position: absolute;
+	bottom: 2pt;
+	font-size: 0.85em;
+}
+
+.news_block .news_item_0{
+	width: 40%;
+	height: 66.66%;
+}
+
+.news_block .news_item_1{
+	width: 20%;
+	height: 33.33%;
+	left: 40%;
+}
+
+.news_block .news_item_2{
+	width: 20%;
+	height: 33.33%;
+	left: 60%;
+}
+
+.news_block .news_item_3{
+	width: 20%;
+	height: 33.33%;
+	left: 80%;
+}
+
+.news_block .news_item_4{
+	width: 20%;
+	height: 33.33%;
+	top: 33.33%;
+	left: 40%;
 }
