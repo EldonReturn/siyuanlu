@@ -3,69 +3,27 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="css/index.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
 </head>
-<body>
+<script type="text/javascript">
 
-<div class="news_area">
-	<ul class="news_block">
-		<li class="news_item news_item_0">
-			<div class="news_item_container">
-				<a href="#">
-					<div class="news_item_clickable">
-						<img src="images/sample.jpg" class="news_item_image">
-						<h3 class="news_item_title">2015 春季时装秀掠影</h3>
-					</div>
-				</a>
-				<p class="news_item_text">备受期待的路易威登 2015 春季女士时装秀在位于巴黎的路易威登基金会大楼举办。</p>
-				<div class="news_item_stat">10月18日 | <a href="#" class="news_item_cat">时尚</a></div>
-			</div>
-		</li>
-		<li class="news_item news_item_1">
-			<div class="news_item_container">
-				<a href="#">
-					<div class="news_item_clickable">
-						<img src="images/sample.jpg" class="news_item_image">
-						<h3 class="news_item_title">2015 春季时装秀掠影</h3>
-					</div>
-				</a>
-				<div class="news_item_stat">10月18日 | <a href="#" class="news_item_cat">时尚</a></div>
-			</div>
-		</li>
-		<li class="news_item news_item_2">
-			<div class="news_item_container">
-				<a href="#">
-					<div class="news_item_clickable">
-						<img src="images/sample.jpg" class="news_item_image">
-						<h3 class="news_item_title">2015 春季时装秀掠影</h3>
-					</div>
-				</a>
-				<div class="news_item_stat">10月18日 | <a href="#" class="news_item_cat">时尚</a></div>
-			</div>
-		</li>
-		<li class="news_item news_item_3">
-			<div class="news_item_container">
-				<a href="#">
-					<div class="news_item_clickable">
-						<img src="images/sample.jpg" class="news_item_image">
-						<h3 class="news_item_title">2015 春季时装秀掠影</h3>
-					</div>
-				</a>
-				<div class="news_item_stat">10月18日 | <a href="#" class="news_item_cat">时尚</a></div>
-			</div>
-		</li>
-		<li class="news_item news_item_4">
-			<div class="news_item_container">
-				<a href="#">
-					<div class="news_item_clickable">
-						<img src="images/sample.jpg" class="news_item_image">
-						<h3 class="news_item_title">2015 春季时装秀掠影</h3>
-					</div>
-				</a>
-				<div class="news_item_stat">10月18日 | <a href="#" class="news_item_cat">时尚</a></div>
-			</div>
-		</li>
-	</ul>
-</div>
+var data = [{img:'images/sample.jpg', title:'2015 春季时装秀掠影', text:'备受期待的路易威登 2015 春季女士时装秀在位于巴黎的路易威登基金会大楼举办。', date: '10月18日', cat: '时尚'},
+			{img:'images/sample.jpg', title:'2015 春季时装秀掠影', text:'备受期待的路易威登 2015 春季女士时装秀在位于巴黎的路易威登基金会大楼举办。', date: '10月18日', cat: '时尚'},
+			{img:'images/sample.jpg', title:'2015 春季时装秀掠影', text:'备受期待的路易威登 2015 春季女士时装秀在位于巴黎的路易威登基金会大楼举办。', date: '10月18日', cat: '时尚'},
+			{img:'images/sample.jpg', title:'2015 春季时装秀掠影', text:'备受期待的路易威登 2015 春季女士时装秀在位于巴黎的路易威登基金会大楼举办。', date: '10月18日', cat: '时尚'},
+			{img:'images/sample.jpg', title:'2015 春季时装秀掠影', text:'备受期待的路易威登 2015 春季女士时装秀在位于巴黎的路易威登基金会大楼举办。', date: '10月18日', cat: '时尚'},
+			{img:'images/sample.jpg', title:'2015 春季时装秀掠影', text:'备受期待的路易威登 2015 春季女士时装秀在位于巴黎的路易威登基金会大楼举办。', date: '10月18日', cat: '时尚'},
+			{img:'images/sample.jpg', title:'2015 春季时装秀掠影', text:'备受期待的路易威登 2015 春季女士时装秀在位于巴黎的路易威登基金会大楼举办。', date: '10月18日', cat: '时尚'},
+			{img:'images/sample.jpg', title:'2015 春季时装秀掠影', text:'备受期待的路易威登 2015 春季女士时装秀在位于巴黎的路易威登基金会大楼举办。', date: '10月18日', cat: '时尚'},
+			{img:'images/sample.jpg', title:'2015 春季时装秀掠影', text:'备受期待的路易威登 2015 春季女士时装秀在位于巴黎的路易威登基金会大楼举办。', date: '10月18日', cat: '时尚'},
+			{img:'images/sample.jpg', title:'2015 春季时装秀掠影', text:'备受期待的路易威登 2015 春季女士时装秀在位于巴黎的路易威登基金会大楼举办。', date: '10月18日', cat: '时尚'},
+			{img:'images/sample.jpg', title:'2015 春季时装秀掠影', text:'备受期待的路易威登 2015 春季女士时装秀在位于巴黎的路易威登基金会大楼举办。', date: '10月18日', cat: '时尚'},
+			{img:'images/sample.jpg', title:'2015 春季时装秀掠影', text:'备受期待的路易威登 2015 春季女士时装秀在位于巴黎的路易威登基金会大楼举办。', date: '10月18日', cat: '时尚'},
+			{img:'images/sample.jpg', title:'2015 春季时装秀掠影', text:'备受期待的路易威登 2015 春季女士时装秀在位于巴黎的路易威登基金会大楼举办。', date: '10月18日', cat: '时尚'}];
+
+</script>
+<body>
 
 </body>
 </html>

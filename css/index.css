@@ -92,3 +92,30 @@
 	top: 33.33%;
 	left: 40%;
 }
+
+.news_block .news_item_5{
+	width: 40%;
+	height: 66.66%;
+	top: 33.33%;
+	left: 60%;
+}
+
+.news_block .news_item_6{
+	width: 20%;
+	height: 33.33%;
+	top: 66.66%;
+}
+
+.news_block .news_item_7{
+	width: 20%;
+	height: 33.33%;
+	top: 66.66%;
+	left: 20%;
+}
+
+.news_block .news_item_8{
+	width: 20%;
+	height: 33.33%;
+	top: 66.66%;
+	left: 40%;
+}
