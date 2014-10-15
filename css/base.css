@@ -1,12 +1,6 @@
-body, p, ul, li{
+body, p, ul, li, h1, h2, h3, h4{
 	font-family: 宋体, "Times New Roman", Serif;
-	font-size: 12pt;
-	margin: 0;
-	padding: 0;
-	border: none;
-}
-
-h1, h2, h3, h4{
+	font-size: 16px;
 	margin: 0;
 	padding: 0;
 	border: none;
@@ -19,4 +13,8 @@ ul, li{
 a{
 	text-decoration: none;
 	color: black;
+}
+
+.display_none{
+	display: none;
 }
