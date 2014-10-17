@@ -47,7 +47,7 @@ $(document).ready(function(){
 </script>
 <body>
 <div class="header">
-
+Header
 </div>
 <div id="news"></div>
 <div class="news_more" id="more">
