@@ -43,4 +43,6 @@ Temporary Items
 .apdisk
 
 #Runtime Files
-Application/Runtime/**/*
+Application/Runtime/**/*.html
+Application/Runtime/**/*.log
+Application/Runtime/**/*.php
