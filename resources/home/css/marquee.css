@@ -1,0 +1,9 @@
+.marquee_box{
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+}
+
+.slide{
+	position: absolute;
+}
