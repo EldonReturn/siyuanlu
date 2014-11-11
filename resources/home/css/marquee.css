@@ -1,10 +1,26 @@
 .marquee_box{
 	position: relative;
+}
+
+.marquee_box .prev{
+	position: absolute;
+	left: 100px;
+	z-index: 10;
+}
+
+.marquee_box .next{
+	position: absolute;
+	right: 100px;
+	z-index: 10;
+}
+
+.marquee_box .container{
+	position: relative;
 	overflow: hidden;
 	width: 100%;
 }
 
-.slide{
+.marquee_box .slide{
 	position: absolute;
 	opacity: 1;
 	z-index: 1;
