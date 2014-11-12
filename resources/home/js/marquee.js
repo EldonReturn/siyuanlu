@@ -1,6 +1,6 @@
 (function($){
 	$.Marquee = function(){
-		var navHeight = 120,
+		var navHeight = 120, interval = 2000,
 			root = $('<div class="marquee_box"></div>'),
 			nav_left = $('<div class="prev display_none"><img src="resources/home/images/marquee/prev.png"/></div>'),
 			nav_right = $('<div class="next display_none"><img src="resources/home/images/marquee/next.png"/></div>'),
@@ -54,14 +54,29 @@
 		// 监测左右浏览事件
 		nav_left.click((function(owner){
 			return function(){
+				clearTimeout(handle);
 				owner.rotate();
+				handle = setTimeout(fn, interval);
+				
 			};
 		})(this));
 		nav_right.click((function(owner){
 			return function(){
+				clearTimeout(handle);
 				owner.rotate(true);
+				handle = setTimeout(fn, interval);
 			};
 		})(this));
+
+		// 定时轮播
+		var handle,
+			fn = (function(owner){
+				return function(){
+					owner.rotate(true);
+					handle = setTimeout(fn, interval);
+				};
+			})(this);
+		handle = setTimeout(fn, interval);
 
 		this.rotate = function(fwd /*是否正循环*/){
 			nodes[nodeIndex].css('z-index', 9);
