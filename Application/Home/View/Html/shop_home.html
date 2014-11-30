@@ -10,7 +10,13 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-	marquee = new $.Marquee();
+	marquee = new $.Marquee(
+		[{img:'resources/home/images/sample_large.jpg'},
+			{img:'resources/home/images/sample_large_2.jpg'},
+			{img:'resources/home/images/sample_large.jpg'},
+			{img:'resources/home/images/sample_large.jpg'},
+			{img:'resources/home/images/sample_large_2.jpg'}],
+		false, 800, 600);
 	$('#marquee').replaceWith(marquee.getNode());
 });
 
