@@ -35,11 +35,15 @@
 	overflow: hidden;
 }
 
-.marquee_box .thumb_container .thumb_slide{
+.marquee_box .thumb_container .thumb_wrapper{
 	position: absolute;
-	display: inline-block;
+}
+
+.marquee_box .thumb_container .thumb_slide{
+	float: left;
 	width: 200px;
 	height: 100px;
+	margin-right: 10px;
 	cursor: pointer;
 }
 

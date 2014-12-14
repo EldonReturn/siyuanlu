@@ -1,6 +1,6 @@
 (function($){
 	$.Marquee = function(data, compact/*是否紧凑模式*/, w/*宽度*/, h/*高度*/){
-		var navHeight = 120, interval = 2000,
+		var navHeight = 120, interval = 20000,
 			owner = this,
 			root = $('<div class="marquee_box"></div>'),
 			wrapper = $('<div></div>'),
@@ -8,6 +8,7 @@
 			nav_right = $('<div class="next display_none"><img src="resources/home/images/marquee/next.png"/></div>'),
 			container = $('<ul class="container"></ul>'),
 			thumbContainer = $('<div class="thumb_container"></div>'),
+			thumbWrapper = $('<ul class="thumb_wrapper"></ul>'),
 			image, len = data.length,
 			nodes = new Array(len), nodeIndex = 0,
 			thumbNodes = new Array(len),
@@ -15,7 +16,7 @@
 			width = fixedWidth ? w : $(document).width(),
 			height = typeof(h) != 'undefined' ? h : 500,
 			lock,
-			THUMB_WIDTH = 205;
+			THUMB_WIDTH = 210;
 
 		this.data = data;
 
@@ -23,11 +24,15 @@
 		wrapper.append(nav_left);
 		wrapper.append(nav_right);
 		wrapper.append(container);
-		if(!compact) root.append(thumbContainer);
+		if(!compact){
+			thumbWrapper.css('width', THUMB_WIDTH * len + 'px');
+			thumbContainer.append(thumbWrapper);
+			root.append(thumbContainer);
+		}
 
 		if(fixedWidth){
-			root.css('width', width);
-			container.css('height', height);
+			root.css('width', width + 'px');
+			container.css('height', height + 'px');
 		}
 
 
@@ -45,15 +50,15 @@
 					nodes[index].css('left', (width - nodes[index].width()) / 2 + 'px');
 				};
 			})(i));
-
-			thumbNodes[i] = $('<div class="thumb_slide" style="left:' + THUMB_WIDTH * i +
-				'px"><img class="thumb_image" src="' + data[i].img + '"/></div>');
-			thumbNodes[i].click((function(index){
-				return function(){
-					owner.jumpTo(index);
-				};
-			})(i));
-			thumbContainer.append(thumbNodes[i]);
+			if(!compact){
+				thumbNodes[i] = $('<li class="thumb_slide"><img class="thumb_image" src="' + data[i].img + '"/></li>');
+				thumbNodes[i].click((function(index){
+					return function(){
+						owner.jumpTo(index);
+					};
+				})(i));
+				thumbWrapper.append(thumbNodes[i]);
+			}
 		}
 
 		container.css('height', height + 'px');
@@ -63,7 +68,7 @@
 			$(window).resize(function(){
 				width = $(document).width();
 				for(var i = 0; i < len; i++){
-					nodes[i].css('left', (width - nodes[i].width()) / 2);
+					nodes[i].css('left', (width - nodes[i].width()) / 2 + 'px');
 				}
 			});
 		}
@@ -100,31 +105,39 @@
 			};
 		handle = setTimeout(fn, interval);
 
-		this.rotate = function(reverse /*是否逆循环*/){
-			if(lock) return;
-			lock = true;
-			nodes[nodeIndex].css('z-index', 9);
-			nodes[reverse ? (nodeIndex + len - 1) % len : (nodeIndex + 1) % len].css('z-index', 1);
-			nodes[nodeIndex].animate({opacity:0}, 'slow', function(){
-				nodes[nodeIndex].css({'z-index': 0, 'opacity': 1});
-				nodeIndex = reverse ? (nodeIndex + len - 1) % len : (nodeIndex + 1) % len;
-				nodes[nodeIndex].css({'z-index': 9, 'opacity': 1});
-				lock = false;
-			});
-		};
-		this.jumpTo = function(index){
-			if(lock) return;
-			lock = true;
-			nodes[nodeIndex].css('z-index', 9);
-			nodes[index].css('z-index', 1);
-			nodes[nodeIndex].animate({opacity:0}, 'slow', function(){
-				nodes[nodeIndex].css({'z-index': 0, 'opacity': 1});
-				nodeIndex = index;
-				nodes[nodeIndex].css({'z-index': 9, 'opacity': 1});
-				lock = false;
-			});
+		// 滚动缩略图
+		var scrollTo = function(index, callback){
+			var left = thumbNodes[index].position().left;
+
+			if(left - THUMB_WIDTH >= 0 && THUMB_WIDTH * (len + 1) - left >= width){
+				left -= THUMB_WIDTH;
+			}else if(THUMB_WIDTH * (len + 1) - left < width){
+				left = THUMB_WIDTH * len - width;
+			}
+			thumbWrapper.animate({'left': -left + 'px'}, 'fast', callback);
 
 		};
+
+		this.rotate = function(reverse /*是否逆循环*/){
+			var next = reverse ? (nodeIndex + len - 1) % len : (nodeIndex + 1) % len;
+			this.jumpTo(next);
+		};
+
+		this.jumpTo = function(index){
+			if(lock || index == nodeIndex) return;
+			lock = true;
+			scrollTo(index, function(){
+				nodes[nodeIndex].css('z-index', 9);
+				nodes[index].css('z-index', 1);
+				nodes[nodeIndex].animate({'opacity': 0}, 'slow', function(){
+					nodes[nodeIndex].css({'z-index': 0, 'opacity': 1});
+					nodeIndex = index;
+					nodes[nodeIndex].css({'z-index': 9, 'opacity': 1});
+					lock = false;
+				});
+			});
+		};
+
 		this.getNode = function(){
 			return root;
 		};
