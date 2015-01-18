@@ -1,6 +1,6 @@
 (function($){
-	$.Marquee = function(data, compact/*是否紧凑模式*/, w/*宽度*/, h/*高度*/){
-		var navHeight = 120, interval = 20000,
+	$.Marquee = function(data, compact/*是否紧凑模式*/, interval/*时间间隔*/, w/*宽度*/, h/*高度*/){
+		var navHeight = 120, interval = !interval ? 20000 : interval,
 			owner = this,
 			root = $('<div class="marquee_box"></div>'),
 			wrapper = $('<div></div>'),
@@ -87,13 +87,13 @@
 		nav_left.click(function(){
 			if(lock) return;
 			clearTimeout(handle);
-			owner.rotate();
+			owner.rotate(true);
 			handle = setTimeout(fn, interval);		
 		});
 		nav_right.click(function(){
 			if(lock) return;
 			clearTimeout(handle);
-			owner.rotate(true);
+			owner.rotate();
 			handle = setTimeout(fn, interval);
 		});
 
@@ -107,15 +107,18 @@
 
 		// 滚动缩略图
 		var scrollTo = function(index, callback){
-			var left = thumbNodes[index].position().left;
+			if(!compact){
+				var left = thumbNodes[index].position().left;
 
-			if(left - THUMB_WIDTH >= 0 && THUMB_WIDTH * (len + 1) - left >= width){
-				left -= THUMB_WIDTH;
-			}else if(THUMB_WIDTH * (len + 1) - left < width){
-				left = THUMB_WIDTH * len - width;
+				if(left - THUMB_WIDTH >= 0 && THUMB_WIDTH * (len + 1) - left >= width){
+					left -= THUMB_WIDTH;
+				}else if(THUMB_WIDTH * (len + 1) - left < width){
+					left = THUMB_WIDTH * len - width;
+				}
+				thumbWrapper.animate({'left': -left + 'px'}, 'fast', callback);
+			}else{
+				callback();
 			}
-			thumbWrapper.animate({'left': -left + 'px'}, 'fast', callback);
-
 		};
 
 		this.rotate = function(reverse /*是否逆循环*/){
@@ -141,5 +144,5 @@
 		this.getNode = function(){
 			return root;
 		};
-	}
+	};
 })(jQuery);

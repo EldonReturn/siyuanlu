@@ -5,25 +5,28 @@
 <link rel="stylesheet" type="text/css" href="resources/home/css/shop_home.css">
 <script type="text/javascript" src="resources/home/js/jquery.js"></script>
 <script type="text/javascript" src="resources/home/js/marquee.js"></script>
+<script type="text/javascript" src="resources/home/js/news_pane.js"></script>
 <title>沧源路</title>
 </head>
 <script type="text/javascript">
 
+var highlights = {$highlights};
+var news = {$news};
+
 $(document).ready(function(){
-	marquee = new $.Marquee(
-		[{img:'resources/home/images/sample_large.jpg'},
-			{img:'resources/home/images/sample_large_2.jpg'},
-			{img:'resources/home/images/sample_large.jpg'},
-			{img:'resources/home/images/sample_large_2.jpg'},
-			{img:'resources/home/images/sample_large.jpg'},
-			{img:'resources/home/images/sample_large_2.jpg'},
-			{img:'resources/home/images/sample_large.jpg'}],
-		false, 800, 600);
-	$('#marquee').replaceWith(marquee.getNode());
+	marquee = new $.Marquee(highlights, true);
+	$('#highlights').replaceWith(marquee.getNode());
+	newsPane = new $.NewsPane();
+	newsPane.load(news);
+	newsPane.refresh();
+	$('#news').replaceWith(newsPane.getNode());
 });
 
 </script>
 <body>
-<div id="marquee"></div>
+<div class="banner"><img src="upload/sjtu_shop_logo.png" /></div>
+<div id="highlights"></div>
+<div class="news_header"><img src="resources/common/news_header.png" /></div>
+<div id="news"></div>
 </body>
 </html>

@@ -1,20 +1,3 @@
-// <div class="news_area">
-// 	<ul class="news_block">
-// 		<li class="news_item news_item_0">
-// 			<div class="news_item_container">
-// 				<a href="#">
-// 					<div class="news_item_clickable">
-// 						<img src="images/sample.jpg" class="news_item_image">
-// 						<h3 class="news_item_title">2015 春季时装秀掠影</h3>
-// 					</div>
-// 				</a>
-// 				<p class="news_item_text">备受期待的路易威登 2015 春季女士时装秀在位于巴黎的路易威登基金会大楼举办。</p>
-// 				<div class="news_item_stat">10月18日 | <a href="#" class="news_item_cat">时尚</a></div>
-// 			</div>
-// 		</li>
-// 	<ul>
-// </div>
-
 (function($){
 	$.NewsPane = function(){
 		var news, lastIndex,

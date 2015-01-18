@@ -1,3 +1,15 @@
 @import url(base.css);
 @import url(marquee.css);
+@import url(news_pane.css);
 
+.banner {
+	padding-left: 10px;
+	background-color: #150d0f
+}
+
+.news_header {
+	margin-top: 30px;
+	margin-left: 20px;
+	margin-right: 20px;
+	border-bottom: solid #aaaaaa 1px;
+}
